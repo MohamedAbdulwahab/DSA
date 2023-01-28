@@ -3,10 +3,10 @@
 // solution
 function factorial(n) {
   // base case
-  if (n === 1) {
+  if (n <= 0) {
     return 1;
   }
 
-  // recursive case
+  // recursive step
   return n * factorial(n - 1);
 }
