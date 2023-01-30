@@ -20,3 +20,21 @@ function countUniqueValues(arr) {
 
   return arr.length === 0 ? 0 : count + 1;
 }
+
+// solution 2: two pointers - O(n) runtime
+function countUniqueValues(arr) {
+  // edge case: empty array.
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  let i = 0;
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
+      i++;
+      arr[i] = arr[j];
+    }
+  }
+
+  return i + 1;
+}
