@@ -8,3 +8,4 @@ function isAnagram(str1, str2) {
 
 	return sortedStr1 === sortedStr2;
 }
+
