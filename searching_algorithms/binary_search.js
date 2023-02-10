@@ -9,7 +9,7 @@
 	- binarySearch([1,2,3,4,5],6) => returns -1
 */
 
-// solution
+// solution: O(log(n)) - runtime
 function binarySearch(arr, val) {
   let left = 0;
   let right = arr.length - 1;
