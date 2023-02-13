@@ -26,7 +26,7 @@ function bubbleSort(arr) {
   return arr;
 }
 
-// solution 3: optimized Bubble Sort
+// solution 3: optimized Bubble Sort (for almost sorted data)
 function optimizedBubbleSort(arr) {
   for (let i = arr.length; i > 0; i--) {
     let noSwaps = true;
