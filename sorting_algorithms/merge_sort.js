@@ -1,7 +1,6 @@
 // write an implementation of merge sort in JavaScript.
 
 // solution:
-// step 1: the merge function
 function merge(arr1, arr2) {
   const mergedArr = [];
   let i = 0;
@@ -31,4 +30,23 @@ function merge(arr1, arr2) {
   }
 
   return mergedArr;
+}
+
+function mergeSort(arr) {
+  // base case: an empty array or an array of one element
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  // find the middle point of the array.
+  let mid = Math.floor(arr.length / 2);
+
+  // recursively break the left side of the array into smaller arrays.
+  let left = mergeSort(arr.slice(0, mid));
+
+  // recursively break the right side of the array into smaller arrays.
+  let right = mergeSort(arr.slice(mid));
+
+  // merge the two sorted sides of the array and return it.
+  return merge(left, right);
 }
