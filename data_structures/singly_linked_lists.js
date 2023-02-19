@@ -42,7 +42,24 @@ class SinglyLinkedList {
     return this;
   }
 
-  /* remove (pop) the last node. */
+  /* shift: remove the first node in the list */
+  shift() {
+    const currentHead = this.head;
+    /* Empty list */
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      /* List has at least one node */
+      this.head = currentHead.next;
+      this.length--;
+      if (this.isEmpty()) {
+        this.tail = null;
+      }
+      return currentHead;
+    }
+  }
+
+  /* pop: remove the last node. */
   pop() {
     /* list is empty */
     if (this.isEmpty()) {
