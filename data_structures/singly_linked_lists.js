@@ -21,7 +21,7 @@ class SinglyLinkedList {
     return this.length === 0;
   }
 
-  /* push a node into a singly linked list */
+  /* push: add a node to the end of a singly linked list */
   push(val) {
     const newNode = new Node(val);
 
@@ -124,7 +124,7 @@ class SinglyLinkedList {
     }
   }
 
-  /* display all the nodes in a singly linked list. */
+  /* displayList: print all the nodes in a singly linked list */
   displayList() {
     let current = this.head;
 
