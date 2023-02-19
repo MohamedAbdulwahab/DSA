@@ -124,6 +124,27 @@ class SinglyLinkedList {
     }
   }
 
+  /* set: change the value of a given node to a different value */
+  set(index, value) {
+    /* invalid index */
+    if (index < 0 || index >= this.length) {
+      return false;
+    } else {
+      let counter = 0;
+      let currentNode = this.head;
+
+      /* find the node at the given index */
+      while (counter !== index) {
+        currentNode = currentNode.next;
+        counter++;
+      }
+      /* set the value */
+      currentNode.val = value;
+
+      return true;
+    }
+  }
+
   /* displayList: print all the nodes in a singly linked list */
   displayList() {
     let current = this.head;
