@@ -179,6 +179,37 @@ class SinglyLinkedList {
     return true;
   }
 
+  /* remove: delete a node at a specific index */
+  remove(index) {
+    /* invalid index */
+    if (index < 0 || index >= this.length) {
+      return false;
+    } else if (index === 0) {
+      /* delete the first node */
+      this.shift(index);
+      return true;
+    } else if (index === this.length - 1) {
+      /* delete the last node */
+      this.pop(index);
+      return true;
+    } else {
+      let currentNode = this.head;
+
+      /* find the prior node */
+      for (let i = 0; i < this.length; i++) {
+        if (i === index - 1) {
+          currentNode.next = currentNode.next.next;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
+    }
+    /* decrement the length of the list */
+    this.length--;
+
+    return true;
+  }
+
   /* displayList: print all the nodes in a singly linked list */
   displayList() {
     let current = this.head;
