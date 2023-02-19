@@ -145,6 +145,40 @@ class SinglyLinkedList {
     }
   }
 
+  /* insert: add a node at a specific index */
+  insert(index, value) {
+    /* invalid index */
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === this.length) {
+      /* inserting at the end of the list */
+      this.push(value);
+      return true;
+    } else if (index === 0) {
+      /* inseting at the beginning of the list */
+      this.unshift(value);
+      return true;
+    } else {
+      /* inserting at a specific index */
+      let currentNode = this.head;
+      let newNode = new Node(value);
+
+      /* find the prior index */
+      for (let i = 0; i < this.length; i++) {
+        if (i === index - 1) {
+          newNode.next = currentNode.next;
+          currentNode.next = newNode;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
+    }
+    /* increment the length of the list */
+    this.length++;
+
+    return true;
+  }
+
   /* displayList: print all the nodes in a singly linked list */
   displayList() {
     let current = this.head;
