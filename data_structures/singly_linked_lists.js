@@ -42,42 +42,6 @@ class SinglyLinkedList {
     return this;
   }
 
-  /* shift: remove the first node in the list */
-  shift() {
-    const currentHead = this.head;
-    /* Empty list */
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      /* List has at least one node */
-      this.head = currentHead.next;
-      this.length--;
-      if (this.isEmpty()) {
-        this.tail = null;
-      }
-      return currentHead;
-    }
-  }
-
-  /* unshift: add a node to the begining of a list */
-  unshift(val) {
-    const newNode = new Node(val);
-
-    /* list is empty */
-    if (this.isEmpty()) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      /* list has at least one node */
-      newNode.next = this.head;
-      this.head = newNode;
-    }
-    /* increment the list's length */
-    this.length++;
-
-    return this;
-  }
-
   /* pop: remove the last node. */
   pop() {
     /* list is empty */
@@ -103,6 +67,60 @@ class SinglyLinkedList {
       this.tail.next = null;
       this.length--;
       return currentNode;
+    }
+  }
+
+  /* shift: remove the first node in the list */
+  shift() {
+    const currentHead = this.head;
+    /* Empty list */
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      /* List has at least one node */
+      this.head = currentHead.next;
+      this.length--;
+      if (this.isEmpty()) {
+        this.tail = null;
+      }
+      return currentHead;
+    }
+  }
+
+  /* unshift: add a node to the beginning of a list */
+  unshift(val) {
+    const newNode = new Node(val);
+
+    /* list is empty */
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      /* list has at least one node */
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    /* increment the list's length */
+    this.length++;
+
+    return this;
+  }
+
+  /* get: returns the node at a given index */
+  get(index) {
+    /* invalid index */
+    if (index < 0 || index >= this.length) {
+      return null;
+    } else {
+      let currentNode = this.head;
+
+      for (let i = 0; i <= index; i++) {
+        if (i === index) {
+          return currentNode;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
     }
   }
 
