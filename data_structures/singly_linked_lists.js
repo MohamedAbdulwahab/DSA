@@ -59,6 +59,25 @@ class SinglyLinkedList {
     }
   }
 
+  /* unshift: add a node to the begining of a list */
+  unshift(val) {
+    const newNode = new Node(val);
+
+    /* list is empty */
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      /* list has at least one node */
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    /* increment the list's length */
+    this.length++;
+
+    return this;
+  }
+
   /* pop: remove the last node. */
   pop() {
     /* list is empty */
