@@ -210,6 +210,36 @@ class SinglyLinkedList {
     return true;
   }
 
+  /* reverse: reverses a list in-place */
+  reverse() {
+    /* get the current head */
+    let currentNode = this.head;
+
+    /* switch head and tail */
+    this.head = this.tail;
+    this.tail = currentNode;
+
+    /* track the previous and next node */
+    let previusNode = null;
+    let nextNode;
+
+    for (let i = 0; i < this.length; i++) {
+      /* save a pointer to the next node */
+      nextNode = currentNode.next;
+
+      /* point the current node to the previous node */
+      currentNode.next = previusNode;
+
+      /* move previous node to next node (advance node) */
+      previusNode = currentNode;
+
+      /* move current node to the next node (advance node) */
+      currentNode = nextNode;
+    }
+
+    return this;
+  }
+
   /* displayList: print all the nodes in a singly linked list */
   displayList() {
     let current = this.head;
