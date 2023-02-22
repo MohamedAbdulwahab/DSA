@@ -41,6 +41,32 @@ class DoublyLinkedList {
     return this;
   }
 
+  /* shift: remove the first node in the list */
+  shift() {
+    /* list is empty */
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    /* store the old head (node to be removed) */
+    let oldHead = this.head;
+
+    /* list has only one node */
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      /* list contains more than one node */
+      this.head = oldHead.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+    /* decrement the length */
+    this.length--;
+
+    return oldHead;
+  }
+
   /* displayList: prints all the nodes in a doubly linked list. */
   displayList() {
     let current = this.head;
