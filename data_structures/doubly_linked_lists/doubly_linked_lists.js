@@ -67,6 +67,27 @@ class DoublyLinkedList {
     return oldHead;
   }
 
+  /* unshift: add a node to the beginning of a list */
+  unshift(val) {
+    /* create a new node to be added as the head of the list */
+    let newNode = new Node(val);
+
+    /* empty list */
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      /* list contains at least one node */
+      newNode.next = this.head;
+      this.head.prev = newNode;
+      this.head = newNode;
+    }
+    /* increment the length */
+    this.length++;
+
+    return this;
+  }
+
   /* displayList: prints all the nodes in a doubly linked list. */
   displayList() {
     let current = this.head;
