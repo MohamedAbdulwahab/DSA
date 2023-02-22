@@ -142,6 +142,41 @@ class DoublyLinkedList {
     }
   }
 
+  /* insert: adds a node at a specific index to a list */
+  insert(index, val) {
+    /* invalid index */
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+
+    /* insert the node at the beginning of the list */
+    if (index === 0) {
+      this.unshift(val);
+    } else if (index === this.length) {
+      /* indert the node at the end of the list */
+      this.push(val);
+    } else {
+      /* insert the node at a specific position in the list */
+      /* create the node to be inserted */
+      let newNode = new Node(val);
+
+      /* use the get method to find the position to insert the node at */
+      let previousNode = this.get(index - 1);
+      let nextNode = previousNode.next;
+
+      /* create the proper connections */
+      previousNode.next = newNode;
+      newNode.prev = previousNode;
+      newNode.next = nextNode;
+      nextNode.prev = newNode;
+
+      /* increment the length */
+      this.length++;
+    }
+
+    return true;
+  }
+
   /* displayList: prints all the nodes in a doubly linked list. */
   displayList() {
     let current = this.head;
