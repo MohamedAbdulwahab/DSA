@@ -88,6 +88,43 @@ class DoublyLinkedList {
     return this;
   }
 
+  /* get: return the index of a given value of a node in a list */
+  get(index) {
+    let currentNode;
+    let counter;
+
+    /* invalid index */
+    if (index < 0 || index >= this.length) {
+      return null;
+    } else if (index <= Math.floor(this.length / 2)) {
+      /* node is in the first half of the list (closer to the head) */
+      /* set counter to the index of the first node and set current node to the head */
+      counter = 0;
+      currentNode = this.head;
+
+      for (let i = 0; i <= Math.floor(this.length / 2); i++) {
+        if (index === counter) {
+          return currentNode.val;
+        }
+        currentNode = currentNode.next;
+        counter++;
+      }
+    } else {
+      /* node is in the second half of the list (closer to the tail) */
+      /* set counter to the index of the last node and set current node to the tail */
+      counter = this.length - 1;
+      currentNode = this.tail;
+
+      for (let i = this.length - 1; i > Math.floor(this.length / 2); i--) {
+        if (index === counter) {
+          return currentNode.val;
+        }
+        currentNode = currentNode.prev;
+        counter--;
+      }
+    }
+  }
+
   /* displayList: prints all the nodes in a doubly linked list. */
   displayList() {
     let current = this.head;
