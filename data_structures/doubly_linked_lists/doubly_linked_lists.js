@@ -88,7 +88,7 @@ class DoublyLinkedList {
     return this;
   }
 
-  /* get: return the index of a given value of a node in a list */
+  /* get: return the node at a given index in a list */
   get(index) {
     let currentNode;
     let counter;
@@ -104,7 +104,7 @@ class DoublyLinkedList {
 
       for (let i = 0; i <= Math.floor(this.length / 2); i++) {
         if (index === counter) {
-          return currentNode.val;
+          return currentNode;
         }
         currentNode = currentNode.next;
         counter++;
@@ -117,11 +117,28 @@ class DoublyLinkedList {
 
       for (let i = this.length - 1; i > Math.floor(this.length / 2); i--) {
         if (index === counter) {
-          return currentNode.val;
+          return currentNode;
         }
         currentNode = currentNode.prev;
         counter--;
       }
+    }
+  }
+
+  /* set: changes the value of a given node at a specific index to a different value */
+  set(index, val) {
+    /* find the node by passing thr given index into the set method */
+    let Node = this.get(index);
+
+    /* index points to a valid node */
+    if (Node) {
+      /* set the value of the node */
+      Node.val = val;
+
+      return true;
+    } else {
+      /* the index passed is invalid */
+      return false;
     }
   }
 
