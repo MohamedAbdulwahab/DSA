@@ -177,6 +177,38 @@ class DoublyLinkedList {
     return true;
   }
 
+  /* remove: deletes a node at a specific index from the list */
+  remove(index) {
+    /* invalid index */
+    if (index < 0 || index >= this.length) {
+      return null;
+    } else if (index === 0) {
+      /* index points to the first node */
+      return this.shift();
+    } else if (index === this.length - 1) {
+      /* index points to the last node */
+      return this.pop();
+    } else {
+      /* index points to a specific node in the list */
+      let currentNode = this.get(index);
+      let previousNode = currentNode.prev;
+      let nextNode = currentNode.next;
+
+      /* cut out the connections for the current node */
+      currentNode.prev = null;
+      currentNode.next = null;
+
+      /* connect the previousNode and nextNode */
+      previousNode.next = nextNode;
+      nextNode.prev = previousNode;
+
+      /* decrement the length */
+      this.length--;
+
+      return currentNode;
+    }
+  }
+
   /* displayList: prints all the nodes in a doubly linked list. */
   displayList() {
     let current = this.head;
