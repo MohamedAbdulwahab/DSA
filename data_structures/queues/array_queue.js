@@ -2,7 +2,7 @@
  * Note: In this implementation, the runtime of the dequeue operation is O(n); Which actually         *
  * defeats the purpose of using a queue because it has an O(1) runtime for both insert and remove.    *
  * to fix this issue, I have implemented a queue class using a linked list which results in an O(1)   *
- * runtime for both of the enqueue and dequeue operations 											                      *
+ * runtime for both of the enqueue and dequeue operations 											*
  * ************************************************************************************************** */
 
 /* Queue class */
