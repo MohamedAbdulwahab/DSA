@@ -94,4 +94,38 @@ class BinarySearchTree {
     /* node is found, return it */
     return currentNode;
   }
+
+  /* BFS: Breadth First Search */
+  BFS() {
+    const queue = [];
+    const visited = [];
+
+    /* start at the root and traverse the BST */
+    let currentNode = this.root;
+
+    /* place the root node in the queue */
+    queue.push(currentNode);
+
+    /* while the queue is not empty */
+    while (queue.length !== 0) {
+      /* shift the current node from the queue */
+      currentNode = queue.shift();
+      /* add the shifted node to the visited array */
+      visited.push(currentNode);
+
+      /* check if the shifted node has a left child */
+      if (currentNode.left) {
+        /* place the left child in the queue */
+        queue.push(currentNode.left);
+      }
+      /* check if the shifted node has a right child */
+      if (currentNode.right) {
+        /* place the right child in the queue */
+        queue.push(currentNode.right);
+      }
+    }
+
+    /* return the visited array */
+    return visited;
+  }
 }
