@@ -61,4 +61,37 @@ class BinarySearchTree {
       }
     }
   }
+
+  /* find: searches for a value and returns the node if it's present in the BST, returns null otherwise */
+  find(val) {
+    /* tree is empty */
+    if (this.root === null) {
+      return false;
+    }
+    /* start from the root */
+    let currentNode = this.root;
+    let nodeIsFound = false;
+
+    /* while the value has not been found AND there is still nodes in the BST */
+    while (nodeIsFound === false && currentNode) {
+      /* value is smaller than current node's value */
+      if (val < currentNode.val) {
+        currentNode = currentNode.left;
+      } else if (val > currentNode.val) {
+        /* value is greater than current node's value */
+        currentNode = currentNode.right;
+      } else {
+        /* value equals the current node's value */
+        nodeIsFound = true;
+      }
+    }
+
+    /* value does not exist in the BST */
+    if (nodeIsFound === false) {
+      return null;
+    }
+
+    /* node is found, return it */
+    return currentNode;
+  }
 }
