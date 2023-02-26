@@ -137,7 +137,9 @@ class BinarySearchTree {
     /* store the root node */
     let currentNode = this.root;
 
+    /* recursively traverse the tree */
     function traverse(node) {
+      /* start at the root and push the node to the visited list */
       visited.push(node);
 
       /* traverse the left nodes first */
@@ -150,7 +152,7 @@ class BinarySearchTree {
       }
     }
 
-    /* invoke the traverse function with the current node */
+    /* invoke the traverse function with the current node - root */
     traverse(currentNode);
 
     /* return the visited nodes list */
@@ -185,6 +187,7 @@ class BinarySearchTree {
     /* invoke the traverse function with the current node - root */
     traverse(currentNode);
 
+    /* return the visited nodes list */
     return visited;
   }
 
