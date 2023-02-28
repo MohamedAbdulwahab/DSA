@@ -125,6 +125,34 @@ class BinarySearchTree {
       }
     }
 
+	  /* DFSPreOrder: Depth First Search - Pre Order */
+	  DFSPreOrder() {
+		/* store visited nodes */
+		const visited = [];
+	
+		/* store the root node */
+		let currentNode = this.root;
+	
+		function traverse(node) {
+		  visited.push(node);
+	
+		  /* traverse the left nodes first */
+		  if (node.left) {
+			traverse(node.left);
+		  }
+		  /* traverse the right nodes after */
+		  if (node.right) {
+			traverse(node.right);
+		  }
+		}
+	
+		/* invoke the traverse function with the current node */
+		traverse(currentNode);
+	
+		/* return the visited nodes list */
+		return visited;
+	  }
+
     /* return the visited array */
     return visited;
   }
