@@ -156,4 +156,35 @@ class BinarySearchTree {
     /* return the visited nodes list */
     return visited;
   }
+
+  /* DFSPostOrder: Depth First Search - Post Order */
+  DFSPostOrder() {
+    /* store visited nodes */
+    const visited = [];
+
+    /* store the root node */
+    let currentNode = this.root;
+
+    /* recursively traverse the tree */
+    function traverse(node) {
+      /* the node has a left side */
+      if (node.left) {
+        /* traverse the left side */
+        traverse(node.left);
+      }
+      /* the node has a right side */
+      if (node.right) {
+        /* traverse the right side */
+        traverse(node.right);
+      }
+
+      /* now push the node to the visited list */
+      visited.push(node);
+    }
+
+    /* invoke the traverse function with the current node - root */
+    traverse(currentNode);
+
+    return visited;
+  }
 }
