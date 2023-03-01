@@ -43,4 +43,88 @@ class maxHeap {
       }
     }
   }
+
+  /* extractMax: removes the max value in the maxHeap, returns it, and rearrages the maxHeap into its correct arrangement */
+  extractMax() {
+    /* swap the max value with the last value in the heap */
+    [[this.values[0]], [this.values[this.values.length - 1]]] = [
+      [this.values[this.values.length - 1]],
+      [this.values[0]],
+    ];
+
+    /* store the maximum value (value to be removed) */
+    const oldMaxValue = this.values.pop();
+
+    /* place the new value at the top of the heap into its correct position */
+    this.bubbleDown();
+
+    /* return the removed value */
+    return oldMaxValue;
+  }
+
+  /* bubbleDown: places the top value in the max heap into its correct position */
+  bubbleDown() {
+    /* store the index of the parent */
+    let parentIdex = 0;
+
+    while (true) {
+      /* break the while loop if there is no swap performed */
+      let swapIndex = null;
+
+      /* store the value of the parent */
+      const parentValue = this.values[parentIdex];
+
+      /* find the index of the left child of the parent */
+      let leftChildIndex = 2 * parentIdex + 1;
+      /* find the index of the right child of the parent */
+      let rightChildIndex = 2 * parentIdex + 2;
+
+      /* store the value of the left child */
+      let leftChildValue;
+      /* store the value of the right child */
+      let rightChildValue;
+
+      /* check if the left child is in bound of the array */
+      if (leftChildIndex < this.values.length) {
+        /* store the value of the left child */
+        leftChildValue = this.values[leftChildIndex];
+
+        /* check if the left child is greater than the parent */
+        if (leftChildValue > parentValue) {
+          /* set swap to the index of the left child */
+          swapIndex = leftChildIndex;
+        }
+      }
+
+      /* check if the right child is in bound of the array */
+      if (rightChildIndex < this.values.length) {
+        /* store the value of the right child */
+        rightChildValue = this.values[rightChildIndex];
+
+        /* In order to set the swap value here we have consider two cases: 
+              1. left child is less than the parent AND the right child is greater than the parent.
+              2. left child is greater than the parent (swap = leftChild Value) AND thr right child is greater than the left child.
+          */
+        if (
+          (swapIndex === null && rightChildValue > parentValue) ||
+          (swapIndex !== null && rightChildValue > leftChildValue)
+        ) {
+          /* set swap to the index of the left child */
+          swapIndex = rightChildIndex;
+        }
+      }
+
+      /* no swap was performed: we are done */
+      if (swapIndex === null) {
+        break;
+      } else {
+        /* swap the parent and the child stored in the swap variable */
+        this.values[parentIdex] = this.values[swapIndex];
+        this.values[swapIndex] = parentValue;
+
+        /* update the parent index (becomes the swap index) */
+        parentIdex = swapIndex;
+      }
+    }
+  }
 }
