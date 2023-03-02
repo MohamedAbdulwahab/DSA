@@ -86,4 +86,29 @@ class HashTable {
     /* return the keys array */
     return keysArr;
   }
+
+  /* values: returns all the values in the hash table */
+  values() {
+    const valuesArr = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      /* define a bucket */
+      let bucket = this.keyMap[i];
+
+      /* a bucket exists and it contains an array */
+      if (bucket) {
+        /* iterate over all the arrays in the bucket */
+        for (let j = 0; j < bucket.length; j++) {
+          /* only push each value once (no duplicate values allowed) */
+          if (!valuesArr.includes(bucket[j][1])) {
+            /* push the non-duplicate value */
+            valuesArr.push(bucket[j][1]);
+          }
+        }
+      }
+    }
+
+    /* return the values array */
+    return valuesArr;
+  }
 }
