@@ -38,7 +38,7 @@ class HashTable {
     this.keyMap[index].push([key, value]);
   }
 
-  /* get: accepts a key and retreive the key-value pair if it exists; returns null otherwise */
+  /* get: accepts a key and retrieves the key-value pair if it exists; returns null otherwise */
   get(key) {
     /* hash the key to get the index in the hash table array */
     const index = this._hash(key);
@@ -60,5 +60,30 @@ class HashTable {
       /* the key does not exist in the hash table */
       return null;
     }
+  }
+
+  /* keys: returns all the keys in the hash table */
+  keys() {
+    const keysArr = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      /* define a bucket */
+      let bucket = this.keyMap[i];
+
+      /* a bucket exists and it contains an array */
+      if (bucket) {
+        /* iterate over all the arrays in the bucket */
+        for (let j = 0; j < bucket.length; j++) {
+          /* only push each key once (no duplicate keys allowed) */
+          if (!keysArr.includes(bucket[j][0])) {
+            /* push the non-duplicate keys */
+            keysArr.push(bucket[j][0]);
+          }
+        }
+      }
+    }
+
+    /* return the keys array */
+    return keysArr;
   }
 }
