@@ -37,4 +37,28 @@ class HashTable {
     /* the hash table array at that index is NOT empty: push the key-value pair into the array at that index */
     this.keyMap[index].push([key, value]);
   }
+
+  /* get: accepts a key and retreive the key-value pair if it exists; returns null otherwise */
+  get(key) {
+    /* hash the key to get the index in the hash table array */
+    const index = this._hash(key);
+
+    /* find the bucket that is supposed to hold the key-value pair */
+    const bucket = this.keyMap[index];
+
+    /* a bucket exists and it contains an array */
+    if (bucket) {
+      /* iterate over this bucket's array */
+      for (let i = 0; i < bucket.length; i++) {
+        /* find the array that matches the key */
+        if (bucket[i][0] === key) {
+          /* return the value of that key */
+          return bucket[i][1];
+        }
+      }
+    } else {
+      /* the key does not exist in the hash table */
+      return null;
+    }
+  }
 }
