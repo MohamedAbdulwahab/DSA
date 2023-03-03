@@ -38,4 +38,14 @@ class Graph {
       }
     );
   }
+
+  /* ----- There is a bug here. It's 3:01 AM, I'm tired. Try to fix tomorrow  ----- */
+  /* removeVertex: removes a vertex from the graph and deletes all its edges */
+  removeVertex(vertex) {
+    while (this.adjacencyList[vertex].length) {
+      const adjacentVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, adjacentVertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
 }
