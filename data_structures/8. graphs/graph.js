@@ -21,4 +21,21 @@ class Graph {
     /* add an edge from V2 to V1 */
     this.adjacencyList[vertexTwo].push(vertexOne);
   }
+
+  /* removeEdge: removes (disconnect) an edge between two vertices in the graph */
+  removeEdge(vertexOne, vertexTwo) {
+    /* filter out V2 from V1's adjacency list */
+    this.adjacencyList[vertexOne] = this.adjacencyList[vertexOne].filter(
+      (e) => {
+        e !== vertexTwo;
+      }
+    );
+
+    /* filter out V1 from V2's adjacency list */
+    this.adjacencyList[vertexTwo] = this.adjacencyList[vertexTwo].filter(
+      (e) => {
+        e !== vertexOne;
+      }
+    );
+  }
 }
